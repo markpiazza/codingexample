@@ -1,0 +1,87 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ToDo",
+		"_postman_id": "b98f26e2-373b-cd95-d99f-47a75a7a1e1d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all todos",
+			"request": {
+				"url": "localhost:8080/toDoItem",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get one todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Your test name\"] = jsonData.dueDate === 0;",
+							"tests[\"Your test name\"] = jsonData.title === \"My first title item\";",
+							"tests[\"Your test name\"] = jsonData.description === \"Some description\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "localhost:8080/toDoItem/0",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post new todo",
+			"request": {
+				"url": "localhost:8080/toDoItem",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\":\"My first title item\",\"description\":\"Some description\",\"dueDate\":0}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Patch existing todo",
+			"request": {
+				"url": "localhost:8080/toDoItem",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\":\"My first title item\",\"description\":\"Some description\",\"dueDate\":0}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
